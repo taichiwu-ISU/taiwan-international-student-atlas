@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="比較臺灣大專校院境外學位生、新生與專班人數，查看各校排名、歷年趨勢及學科領域。">
+  <meta name="theme-color" content="#21112c">
+  <title>校際比較｜境外學生觀測站</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./compare.css">
+  <script defer src="./data/catalog.js"></script>
+  <script defer src="./student-site.js"></script>
+  <script defer src="./student-analytics.js"></script>
+  <script defer src="./compare.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html#main">
+        <span class="brand-icon" aria-hidden="true"><i></i></span>
+        <span>境外學生觀測站<small>臺灣大專校院</small></span>
+      </a>
+      <nav aria-label="頁面導覽">
+        <a class="nav-link" href="./index.html#main"><span aria-hidden="true">▦</span>查詢總覽</a>
+        <a class="nav-link" href="#main" aria-current="page"><span aria-hidden="true">⇄</span>校際比較</a>
+        <a class="nav-link" href="./health.html"><span aria-hidden="true">◈</span>招生健檢</a>
+        <a class="nav-link" href="./groups.html"><span aria-hidden="true">◫</span>群體比較</a>
+        <a class="nav-link" href="./mobility.html"><span aria-hidden="true">⇆</span>Student Mobility</a>
+        <a class="nav-link" href="./share.html"><span aria-hidden="true">◉</span>外生佔比(封鎖中)</a>
+        <a class="nav-link" href="./sources.html"><span aria-hidden="true">ⓘ</span>資料說明</a>
+        <a class="nav-link" href="./system.html"><span aria-hidden="true">▤</span>系統說明</a>
+        <a class="nav-link" href="./author.html"><span aria-hidden="true">◎</span>作者資訊</a>
+      </nav>
+      <div class="sidebar-bottom">
+        資料來源 <span>教育部公開資料</span>
+        <div class="sidebar-author">
+          <img class="sidebar-university-logo" src="./assets/isu-logo.png" alt="義守大學 I-SHOU UNIVERSITY" width="864" height="171">
+          <span>吳岱栖</span>
+          <p>義守大學國際策略長</p>
+          <p>義守大學國際處團隊製作</p>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <header class="topbar"><span>教育統計 <span class="slash" aria-hidden="true">/</span> 校際比較</span><a href="./sources.html" class="data-badge">教育部公開資料</a></header>
+      <div class="body compare">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="orbits" aria-hidden="true"></div>
+          <div class="hero-content">
+            <h1 id="page-title">校際比較</h1>
+            <p class="hero-description">選擇學校，查看全臺排名、歷年變化與各校的招生領域。</p>
+          </div>
+        </section>
+
+        <section class="panel filters compare-filters" aria-labelledby="compare-filters-title">
+          <h2 id="compare-filters-title">比較條件</h2>
+          <div class="compare-filter-grid">
+            <label class="select-field" for="compare-year">學年度<select id="compare-year"></select></label>
+            <div class="picker-field"><span id="focus-school-label">主比較學校</span><div id="focus-school-picker"></div></div>
+            <div class="picker-field" id="peer-picker-field"><span id="peer-school-label">對照學校</span><div id="peer-school-picker"></div></div>
+          </div>
+          <div class="compare-selection">
+            <div class="peer-chips" id="peer-chips"></div>
+            <p class="compare-note" id="peer-status" aria-live="polite">最多可加入四所對照學校。</p>
+          </div>
+        </section>
+
+        <p id="compare-error" class="error" role="alert" hidden></p>
+        <noscript>請啟用 JavaScript 以使用校際比較。</noscript>
+
+        <div id="compare-results" aria-busy="true">
+          <div class="section-label">
+            <h2 id="compare-summary-title">排名總覽</h2>
+            <span id="compare-scope" aria-live="polite">載入統計資料中…</span>
+          </div>
+          <div id="compare-metrics" class="metrics compare-metrics" aria-labelledby="compare-summary-title"></div>
+          <p class="compare-note panel-note">可辨識專班以公開明細為準。與一般生合併填報的專班無法拆分。</p>
+
+          <section class="panel compare-panel" id="rank-comparison" aria-labelledby="compare-ranks-title" hidden>
+            <div class="panel-head">
+              <div><h2 id="compare-ranks-title">各校人數與全臺排名</h2><p>全臺排名按當年度各指標有資料的校別計算，同人數並列。</p></div>
+            </div>
+            <div class="table-scroll" id="compare-ranks" tabindex="0" aria-label="各校人數與排名"></div>
+            <p class="compare-note panel-note">專班占比以各校境外學位生總數為分母。</p>
+          </section>
+
+          <section class="panel compare-panel" aria-labelledby="compare-trend-title">
+            <div class="panel-head">
+              <div><h2 id="compare-trend-title">近五年趨勢</h2><p>顯示截至所選學年度的人數，展開下方表格可看各年名次。</p></div>
+              <label class="select-field comparison-select" for="compare-trend-metric">趨勢指標
+                <select id="compare-trend-metric">
+                  <option value="degree">境外學位生</option>
+                  <option value="newcomers">境外新生</option>
+                  <option value="programs">可辨識專班學位生</option>
+                </select>
+              </label>
+            </div>
+            <div id="compare-trend-chart"></div>
+            <details class="trend-numbers">
+              <summary>各年度人數及全臺排名</summary>
+              <div class="table-scroll" id="compare-trend-table" tabindex="0" aria-label="各年度人數及全臺排名"></div>
+            </details>
+          </section>
+
+          <section class="panel compare-panel" aria-labelledby="compare-fields-title">
+            <div class="panel-head">
+              <div><h2 id="compare-fields-title">學科領域比較</h2><p>按主比較學校的全臺名次排列。點選領域可查看各校人數與主比較學校的科系。</p></div>
+              <label class="select-field comparison-select" for="compare-field-metric">領域指標
+                <select id="compare-field-metric">
+                  <option value="degree">境外學位生</option>
+                  <option value="newcomers">境外新生</option>
+                </select>
+              </label>
+            </div>
+            <div class="table-scroll" id="compare-fields" tabindex="0" aria-label="學科領域比較"></div>
+            <p id="field-baseline" class="compare-note panel-note"></p>
+          </section>
+
+          <section class="panel compare-panel" aria-labelledby="compare-countries-title">
+            <div class="panel-head">
+              <div><h2 id="compare-countries-title">境外學位生來源地</h2><p>查看各校前五大來源地，或選一個來源地比較各校人數與占比。</p></div>
+              <div class="picker-field comparison-select"><span id="compare-country-label">來源地</span><div id="compare-country-picker"></div></div>
+            </div>
+            <div class="table-scroll" id="compare-countries" tabindex="0" aria-label="境外學位生來源地比較"></div>
+          </section>
+        </div>
+
+        <dialog class="department-dialog field-dialog" id="field-dialog" aria-labelledby="field-dialog-title" aria-describedby="field-dialog-context">
+          <div class="department-dialog-head">
+            <div><h2 id="field-dialog-title"></h2><p id="field-dialog-context"></p></div>
+            <form method="dialog"><button type="submit" class="dialog-close" aria-label="關閉領域明細" autofocus>×</button></form>
+          </div>
+          <div class="department-dialog-body" id="field-dialog-body" role="region" aria-label="領域明細" tabindex="0"></div>
+        </dialog>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

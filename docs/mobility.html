@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="依教育部公開資料查詢臺灣大專校院的來臺交換生與本國學生出國進修交流。">
+  <meta name="theme-color" content="#21112c">
+  <title>Student Mobility｜境外學生觀測站</title>
+  <link rel="stylesheet" href="./style.css?v=4">
+  <link rel="stylesheet" href="./mobility.css">
+  <script defer src="./data/catalog.js"></script>
+  <script defer src="./student-site.js"></script>
+  <script defer src="./student-analytics.js"></script>
+  <script defer src="./data/mobility.js"></script>
+  <script defer src="./mobility.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html#main">
+        <span class="brand-icon" aria-hidden="true"><i></i></span>
+        <span>境外學生觀測站<small>臺灣大專校院</small></span>
+      </a>
+      <nav aria-label="頁面導覽">
+        <a class="nav-link" href="./index.html#main"><span aria-hidden="true">▦</span>查詢總覽</a>
+        <a class="nav-link" href="./compare.html"><span aria-hidden="true">⇄</span>校際比較</a>
+        <a class="nav-link" href="./health.html"><span aria-hidden="true">◈</span>招生健檢</a>
+        <a class="nav-link" href="./groups.html"><span aria-hidden="true">◫</span>群體比較</a>
+        <a class="nav-link" href="#main" aria-current="page" lang="en"><span aria-hidden="true">⇆</span>Student Mobility</a>
+        <a class="nav-link" href="./share.html"><span aria-hidden="true">◉</span>外生佔比(封鎖中)</a>
+        <a class="nav-link" href="./sources.html"><span aria-hidden="true">ⓘ</span>資料說明</a>
+        <a class="nav-link" href="./system.html"><span aria-hidden="true">▤</span>系統說明</a>
+        <a class="nav-link" href="./author.html"><span aria-hidden="true">◎</span>作者資訊</a>
+      </nav>
+      <div class="sidebar-bottom">
+        資料來源 <span>教育部公開資料</span>
+        <div class="sidebar-author">
+          <img class="sidebar-university-logo" src="./assets/isu-logo.png" alt="義守大學 I-SHOU UNIVERSITY" width="864" height="171">
+          <span>吳岱栖</span>
+          <p>義守大學國際策略長</p>
+          <p>義守大學國際處團隊製作</p>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <header class="topbar"><span>教育統計 <span class="slash" aria-hidden="true">/</span> Student Mobility</span><a href="#mobility-sources" class="data-badge">教育部公開資料</a></header>
+      <div class="body mobility">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="orbits" aria-hidden="true"></div>
+          <div class="hero-content">
+            <h1 id="page-title" lang="en">Student Mobility</h1>
+            <p class="hero-description">查詢臺灣大專校院的來臺交換生與本國學生出國進修交流。</p>
+          </div>
+        </section>
+        <section class="panel filters mobility-filters" aria-labelledby="mobility-filter-title">
+          <h2 id="mobility-filter-title">查詢條件</h2>
+          <div class="mobility-controls">
+            <label class="select-field">學年度<select id="mobility-year" disabled></select></label>
+            <div class="picker-field"><span id="mobility-school-label">學校</span><div id="mobility-school"></div></div>
+          </div>
+        </section>
+        <noscript><p class="error">請啟用 JavaScript 以查詢學生流動資料。</p></noscript>
+        <p class="error" id="mobility-error" role="alert" hidden>目前無法載入學生流動資料。請重新整理頁面後再試。</p>
+        <div id="mobility-results" hidden>
+          <div class="section-label overview-heading">
+            <h2>查詢概況</h2><span id="mobility-scope" role="status"></span>
+          </div>
+          <div class="mobility-grid">
+            <section class="panel mobility-card" aria-labelledby="inbound-title">
+              <h2 id="inbound-title"><span lang="en">Inbound</span> 來臺交換</h2>
+              <p class="mobility-definition">教育部非學位生統計中的外國交換生。</p>
+              <p class="mobility-total" id="inbound-total"></p>
+              <p class="mobility-breakdown" id="inbound-breakdown"></p>
+              <div class="mobility-chart" id="inbound-chart" role="group" aria-label="來臺交換歷年人數"></div>
+              <h3 id="inbound-rank-title">主要來源地</h3>
+              <div id="inbound-rank" aria-labelledby="inbound-rank-title"></div>
+            </section>
+            <section class="panel mobility-card mobility-outbound" aria-labelledby="outbound-title">
+              <h2 id="outbound-title"><span lang="en">Outbound</span> 出國進修交流</h2>
+              <p class="mobility-definition">日間學制本國學生赴外進修交流且修讀學分。</p>
+              <p class="mobility-total" id="outbound-total"></p>
+              <p class="mobility-breakdown" id="outbound-breakdown"></p>
+              <div class="mobility-chart" id="outbound-chart" role="group" aria-label="出國進修交流歷年人次"></div>
+              <h3 id="outbound-rank-title">主要目的地</h3>
+              <div id="outbound-rank" aria-labelledby="outbound-rank-title"></div>
+            </section>
+          </div>
+        </div>
+        <section class="panel mobility-sources" id="mobility-sources" aria-labelledby="mobility-sources-title">
+          <h2 id="mobility-sources-title">資料來源與統計口徑</h2>
+          <ul>
+            <li>來臺交換按學年度統計，涵蓋 106–114 學年度。官方 CSV 的 113、114 學年度外國交換生學校與國別明細一致。<a href="https://data.gov.tw/dataset/6289">教育部境外非學位生人數統計</a></li>
+            <li>出國進修交流涵蓋 105–113 學年度，包含交換及其他修讀學分的進修交流。兩學期加總為人次，同一學生可能在兩學期均被計入。<a href="https://udb.moe.edu.tw/udata/DetailReportList/%E5%AD%B8%E7%94%9F%E9%A1%9E/SirdContinuingEducationAndExchangeStudent108/Index">教育部校務資訊公開平臺・學5</a></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

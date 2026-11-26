@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="依教育部公開資料查詢臺灣大專校院的境外學生、來源地、學科領域與新生註冊人數。">
+  <meta name="theme-color" content="#21112c">
+  <title>境外學生觀測站｜臺灣大專校院</title>
+  <link rel="stylesheet" href="./style.css?v=4">
+  <script defer src="./data/catalog.js?v=2"></script>
+  <script defer src="./data/emi.js"></script>
+  <script defer src="./student-site.js?v=2"></script>
+  <script defer src="./app.js?v=6"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#main">
+        <span class="brand-icon" aria-hidden="true"><i></i></span>
+        <span>境外學生觀測站<small>臺灣大專校院</small></span>
+      </a>
+      <nav aria-label="頁面導覽">
+        <a class="nav-link" href="#main" aria-current="page"><span aria-hidden="true">▦</span>查詢總覽</a>
+        <a class="nav-link" href="./compare.html"><span aria-hidden="true">⇄</span>校際比較</a>
+        <a class="nav-link" href="./health.html"><span aria-hidden="true">◈</span>招生健檢</a>
+        <a class="nav-link" href="./groups.html"><span aria-hidden="true">◫</span>群體比較</a>
+        <a class="nav-link" href="./mobility.html"><span aria-hidden="true">⇆</span>Student Mobility</a>
+        <a class="nav-link" href="./share.html"><span aria-hidden="true">◉</span>外生佔比(封鎖中)</a>
+        <a class="nav-link" href="./sources.html"><span aria-hidden="true">ⓘ</span>資料說明</a>
+        <a class="nav-link" href="./system.html"><span aria-hidden="true">▤</span>系統說明</a>
+        <a class="nav-link" href="./author.html"><span aria-hidden="true">◎</span>作者資訊</a>
+      </nav>
+      <div class="sidebar-bottom">
+        資料來源 <span>教育部公開資料</span>
+        <div class="sidebar-author">
+          <img class="sidebar-university-logo" src="./assets/isu-logo.png" alt="義守大學 I-SHOU UNIVERSITY" width="864" height="171">
+          <span>吳岱栖</span>
+          <p>義守大學國際策略長</p>
+          <p>義守大學國際處團隊製作</p>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <header class="topbar"><span>教育統計 <span class="slash" aria-hidden="true">/</span> 境外學生</span><a href="./sources.html" class="data-badge">教育部公開資料</a></header>
+      <div class="body">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="orbits" aria-hidden="true"></div>
+          <div class="hero-content">
+            <p class="hero-scope" id="data-range">臺灣大專校院</p>
+            <h1 id="page-title">境外學生觀測站</h1>
+            <p class="hero-description">查詢各校境外學生人數、來源地、學科分布與歷年新生註冊概況。</p>
+          </div>
+        </section>
+
+        <section class="panel filters" aria-labelledby="filter-title">
+          <div class="filter-header">
+            <h2 id="filter-title">查詢條件</h2>
+            <div class="segments" role="group" aria-label="統計指標">
+              <button type="button" data-mode="degree" aria-pressed="true">境外學位生</button>
+              <button type="button" data-mode="nondegree" aria-pressed="false">非學位生</button>
+              <button type="button" data-mode="newcomers" aria-pressed="false">境外新生</button>
+            </div>
+          </div>
+          <div class="filter-grid" id="filters">
+            <label class="select-field" for="year">學年度<select id="year"></select></label>
+            <div class="picker-field"><span id="school-label">學校</span><div id="school-picker"></div></div>
+            <div class="picker-field" id="country-field"><span id="country-label">來源地</span><div id="country-picker"></div></div>
+            <label class="select-field" for="kind" id="kind-field">學生身分<select id="kind"></select></label>
+            <label class="select-field" for="domain" id="domain-field">學科領域<select id="domain"></select></label>
+            <label class="select-field" for="level" id="level-field">學制<select id="level"></select></label>
+            <label class="select-field" for="language">授課語言
+              <select id="language" aria-describedby="language-note">
+                <option value="all">全語言</option>
+                <option value="emi">EMI</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-footer">
+            <div class="filter-programs">
+              <label class="select-field program-field" for="programs">專班學生
+                <select id="programs" aria-describedby="program-note">
+                  <option value="include">全部學生</option>
+                  <option value="exclude">不包含專班學生</option>
+                  <option value="only">僅專班學生</option>
+                </select>
+              </label>
+              <p id="program-note">依公開明細中可辨識的專班篩選，合併填報的人數無法拆分。</p>
+            </div>
+            <button class="text-button" type="button" id="reset">重設篩選</button>
+          </div>
+          <p id="filter-note"></p>
+          <p id="language-note" role="status"></p>
+        </section>
+
+        <div class="workspace" aria-busy="true">
+          <div class="section-label overview-heading">
+            <h2 id="scope-heading">查詢概況</h2>
+            <span id="scope-label" aria-live="polite">載入統計資料中…</span>
+          </div>
+          <p hidden class="error" id="error" role="alert"></p>
+          <noscript>請啟用 JavaScript 以使用互動查詢。</noscript>
+          <div id="metrics" class="metrics" aria-label="查詢指標"></div>
+
+          <div class="charts">
+            <section class="panel trend" aria-labelledby="trend-title">
+              <div class="panel-head">
+                <div><h2 id="trend-title">歷年人數趨勢</h2><p id="trend-caption" aria-live="polite">點選年份切換查詢年度</p></div>
+                <span class="unit">單位：人</span>
+              </div>
+              <div id="trend" class="trend-body" aria-label="歷年人數趨勢"></div>
+              <button type="button" id="load-trend" class="outline-button" aria-controls="trend" hidden>重試載入歷年趨勢</button>
+            </section>
+            <section class="panel ranking" aria-labelledby="rank-title">
+              <div class="panel-head">
+                <div><h2 id="rank-title">主要來源地</h2><p id="rank-caption">依目前篩選條件排序</p></div>
+                <span class="unit">前 5 名</span>
+              </div>
+              <div id="rank"></div>
+            </section>
+          </div>
+
+          <section class="panel detail" id="details" aria-labelledby="detail-title">
+            <div class="panel-head">
+              <div><h2 id="detail-title">統計明細</h2><p id="detail-caption">切換分組以比較人數。</p></div>
+              <button type="button" id="export" class="outline-button">↓ 下載 CSV</button>
+            </div>
+            <div class="table-tools">
+              <div id="groups" class="table-tabs" role="group" aria-label="明細分組"></div>
+              <label class="table-search"><span class="visually-hidden">搜尋明細</span><input id="table-search" type="search" placeholder="搜尋明細"></label>
+            </div>
+            <div class="table-scroll" tabindex="0" aria-label="統計明細表">
+              <table>
+                <thead id="table-head"></thead>
+                <tbody id="table-body"></tbody>
+              </table>
+            </div>
+            <div class="pagination">
+              <span id="result-count" aria-live="polite"></span>
+              <div><button type="button" id="prev" aria-label="上一頁">‹</button><span id="page"></span><button type="button" id="next" aria-label="下一頁">›</button></div>
+            </div>
+          </section>
+        </div>
+
+        <dialog class="department-dialog" id="department-dialog" aria-labelledby="department-dialog-title" aria-describedby="department-dialog-context">
+          <div class="department-dialog-head">
+            <div>
+              <h2 id="department-dialog-title"></h2>
+              <p id="department-dialog-context"></p>
+            </div>
+            <form method="dialog">
+              <button type="submit" class="dialog-close" aria-label="關閉科系明細" autofocus>×</button>
+            </form>
+          </div>
+          <div class="department-dialog-body" role="region" aria-label="科系統計明細" tabindex="0">
+            <p class="department-total"><span id="department-total-label"></span><strong id="department-total-value"></strong></p>
+            <table id="department-sources" aria-label="科系來源地人數" hidden>
+              <thead><tr><th scope="col">來源國家或地區</th><th scope="col" class="numeric">人數</th><th scope="col" class="numeric">占在學總人數</th></tr></thead>
+              <tbody id="department-sources-body"></tbody>
+            </table>
+            <p id="department-sources-note" class="department-sources-note" hidden></p>
+          </div>
+        </dialog>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

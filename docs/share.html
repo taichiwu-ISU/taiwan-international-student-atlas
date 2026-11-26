@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="依教育部公開資料查詢106至114學年度各校、各科系境外學位生佔正式學籍在學學生的比例。">
+  <meta name="theme-color" content="#21112c">
+  <title>外生佔比(封鎖中)｜境外學生觀測站</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./compare.css">
+  <link rel="stylesheet" href="./groups.css">
+  <link rel="stylesheet" href="./share.css?v=2">
+  <script defer src="./share-gate.js?v=4"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="./index.html#main">
+        <span class="brand-icon" aria-hidden="true"><i></i></span>
+        <span>境外學生觀測站<small>臺灣大專校院</small></span>
+      </a>
+      <nav aria-label="頁面導覽">
+        <a class="nav-link" href="./index.html#main"><span aria-hidden="true">▦</span>查詢總覽</a>
+        <a class="nav-link" href="./compare.html"><span aria-hidden="true">⇄</span>校際比較</a>
+        <a class="nav-link" href="./health.html"><span aria-hidden="true">◈</span>招生健檢</a>
+        <a class="nav-link" href="./groups.html"><span aria-hidden="true">◫</span>群體比較</a>
+        <a class="nav-link" href="./mobility.html"><span aria-hidden="true">⇆</span>Student Mobility</a>
+        <a class="nav-link" href="#main" aria-current="page"><span aria-hidden="true">◉</span>外生佔比(封鎖中)</a>
+        <a class="nav-link" href="./sources.html"><span aria-hidden="true">ⓘ</span>資料說明</a>
+        <a class="nav-link" href="./system.html"><span aria-hidden="true">▤</span>系統說明</a>
+        <a class="nav-link" href="./author.html"><span aria-hidden="true">◎</span>作者資訊</a>
+      </nav>
+      <div class="sidebar-bottom">
+        資料來源 <span>教育部公開資料</span>
+        <div class="sidebar-author">
+          <img class="sidebar-university-logo" src="./assets/isu-logo.png" alt="義守大學 I-SHOU UNIVERSITY" width="864" height="171">
+          <span>吳岱栖</span>
+          <p>義守大學國際策略長</p>
+          <p>義守大學國際處團隊製作</p>
+        </div>
+      </div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <header class="topbar"><span>教育統計 <span class="slash" aria-hidden="true">/</span> 外生佔比(封鎖中)</span><a href="./sources.html" class="data-badge">教育部公開資料</a></header>
+      <dialog class="department-dialog share-gate" id="share-gate" aria-labelledby="share-gate-title">
+        <div class="department-dialog-head"><h2 id="share-gate-title">驚嚇指數太高，兒童不宜。</h2></div>
+        <form class="department-dialog-body" method="dialog" id="share-unlock-form">
+          <label class="select-field" for="share-passcode">請輸入密碼
+            <input id="share-passcode" type="password" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" required autofocus aria-describedby="share-passcode-count share-gate-status">
+          </label>
+          <div class="share-passcode-tools">
+            <label class="share-passcode-visibility"><input id="share-show-passcode" type="checkbox" aria-controls="share-passcode">顯示密碼</label>
+            <span id="share-passcode-count">已輸入 0 個字元</span>
+          </div>
+          <p class="share-gate-status" id="share-gate-status" role="status"></p>
+          <div class="share-gate-actions">
+            <button type="submit" class="share-unlock-button">解鎖</button>
+            <a href="./index.html#main">返回查詢總覽</a>
+          </div>
+        </form>
+      </dialog>
+      <noscript><p class="body">請啟用 JavaScript 才能解鎖外生佔比。</p></noscript>
+      <div class="body compare" id="share-protected" hidden>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="orbits" aria-hidden="true"></div>
+          <div class="hero-content">
+            <h1 id="page-title">外生佔比(封鎖中)</h1>
+            <p class="hero-description">查看境外學位生在各校與各科系的比例。</p>
+          </div>
+        </section>
+        <section class="panel filters cohort-panel" aria-labelledby="share-filters-title">
+          <h2 id="share-filters-title">查詢條件</h2>
+          <div class="cohort-controls">
+            <label class="select-field">學年度<select id="share-year"></select></label>
+            <label class="select-field">公私立<select id="share-ownership"><option value="">全部</option><option value="公立">公立</option><option value="私立">私立</option></select></label>
+            <label class="select-field">學校類型<select id="share-type"><option value="">全部</option><option value="general">一般大學</option><option value="technical">科技大學</option></select></label>
+            <div class="picker-field"><span id="share-school-label">學校</span><div id="share-school-picker"></div></div>
+            <label class="select-field">學科領域<select id="share-domain"></select></label>
+          </div>
+          <p class="compare-note panel-note">境外學位生佔比＝境外學位生人數 ÷ 正式學籍在學總人數 × 100%。總人數包含本地生與境外生，涵蓋日間及進修學制。</p>
+          <p class="compare-note panel-note">公私立與學校類型依各學年度教育部校別分類。科技大學包含技專校院類別中的大學。</p>
+        </section>
+        <p id="share-error" class="error" role="alert" hidden></p>
+        <section id="share-results" aria-busy="true">
+          <div class="section-label"><h2 id="share-scope">載入統計資料中…</h2></div>
+          <div class="metrics compare-metrics" id="share-metrics"></div>
+          <p class="compare-note panel-note" id="share-coverage"></p>
+          <section class="panel compare-panel" id="share-history" aria-labelledby="share-history-title">
+            <div class="panel-head share-toolbar">
+              <h2 id="share-history-title">歷年本地生與境外學位生佔比</h2>
+              <div class="share-history-legend"><span class="share-local-key">本地生</span><span class="share-foreign-key">境外學位生</span></div>
+            </div>
+            <div id="share-history-chart" aria-busy="true"></div>
+            <p class="compare-note panel-note" id="share-history-note"></p>
+            <details class="trend-numbers">
+              <summary>查看各年度人數與比例</summary>
+              <div class="table-scroll" id="share-history-table" tabindex="0" aria-label="歷年本地生與境外學位生人數及比例"></div>
+            </details>
+          </section>
+          <section class="panel compare-panel" aria-labelledby="share-table-title">
+            <div class="panel-head share-toolbar">
+              <h2 id="share-table-title">各校境外學位生佔比</h2>
+              <div class="segments" role="group" aria-label="統計層級">
+                <button type="button" data-share-view="school" aria-pressed="true">各校</button>
+                <button type="button" data-share-view="department" aria-pressed="false">各科系</button>
+              </div>
+            </div>
+            <div class="share-toolbar">
+              <label class="select-field">排序<select id="share-sort"><option value="ratio">佔比由高到低</option><option value="foreign">境外學位生由多到少</option><option value="total">在學總人數由多到少</option></select></label>
+              <label class="table-search">搜尋學校／科系<input type="search" id="share-search" placeholder="輸入名稱或代碼"></label>
+            </div>
+            <div class="table-scroll" id="share-table" tabindex="0" aria-labelledby="share-table-title"></div>
+            <p class="compare-note panel-note" id="share-emi-note" hidden></p>
+            <div class="pagination"><span id="share-count"></span><button type="button" id="share-prev" class="text-button">上一頁</button><span id="share-page"></span><button type="button" id="share-next" class="text-button">下一頁</button></div>
+          </section>
+        </section>
+        <section class="panel compare-panel">
+          <h2>統計範圍</h2>
+          <p class="compare-note panel-note">兩份資料皆採同學年度10月15日統計。各校彙總依學校及科系代碼對應。各科系明細另比對系所或班別名稱，共用代碼的普通班和專班分別計算。境外學位生包含外籍生、僑生（含港澳）及陸生。班別名稱無法完整對應或人數範圍有出入時，相關班別佔比顯示「—」。</p>
+          <p class="compare-note panel-note">缺少在學總人數、分母為0或境外學位生超過總人數時，佔比顯示「—」。113學年度起在學總數納入國際專修部學位先修生。各校系所改名、合併或填報範圍差異可能影響比較。</p>
+          <div class="source-links"><a href="https://data.gov.tw/dataset/9622" target="_blank" rel="noopener">教育部各校科系別學生數</a><a href="https://data.gov.tw/dataset/6289" target="_blank" rel="noopener">教育部境外學生人數</a></div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

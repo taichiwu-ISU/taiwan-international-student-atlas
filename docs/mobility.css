@@ -1,0 +1,39 @@
+.mobility .hero h1 { margin-top: 0; }
+.mobility-filters { padding-bottom: 16px; }
+.mobility-controls { display: grid; grid-template-columns: minmax(8rem, 12rem) minmax(0, 23rem); gap: 14px; margin-top: 12px; }
+.mobility-controls :is(.select-field, .picker-field) { font-size: .875rem; }
+.mobility-controls .picker-popover { z-index: 4; }
+.mobility .section-label span { font-size: .875rem; }
+.mobility-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.mobility-card { --mobility-accent: #59357a; --mobility-fill: #b69bc8; border-top: 3px solid var(--mobility-fill); padding: 20px; }
+.mobility-outbound { --mobility-accent: #315b82; --mobility-fill: #90acc6; }
+.mobility-card h2 span { color: var(--mobility-accent); margin-right: .25em; }
+.mobility-definition, .mobility-breakdown { color: var(--muted); font-size: .875rem; line-height: 1.55; }
+.mobility-definition { margin-top: 5px; }
+.mobility-total { display: flex; align-items: baseline; gap: 8px; color: var(--mobility-accent); margin-top: 14px; font-size: .875rem; }
+.mobility-total strong { font-size: clamp(1.9rem, 4vw, 2.8rem); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.mobility-breakdown { margin-top: 6px; min-height: 1.55em; }
+.mobility-chart { margin-top: 24px; }
+.mobility-chart .bar { background: var(--mobility-fill); }
+.mobility-chart .plot button:is([aria-pressed="true"], :hover, :focus-visible) .bar { background: var(--mobility-accent); }
+.mobility-chart .plot button[aria-pressed="true"] .year-label { color: var(--mobility-accent); }
+.mobility-chart .plot .bar-label { background: var(--mobility-accent); font-size: .75rem; }
+.mobility-chart .plot button:nth-child(-n+2) .bar-label { left: 0; transform: none; }
+.mobility-chart .plot button:nth-last-child(-n+2) .bar-label { left: auto; right: 0; transform: none; }
+.mobility-card h3 { font-size: .95rem; margin: 16px 0 0; }
+.mobility-card .rank-list { margin-top: 8px; }
+.mobility-card .rank-item { font-size: .875rem; }
+.mobility-card .rank-track i { background: var(--mobility-fill); }
+.mobility-card .rank-list li:first-child .rank-track i { background: var(--mobility-accent); }
+.mobility-sources { margin-top: 16px; padding: 18px 20px; }
+.mobility-sources ul { padding-inline-start: 1.25rem; margin: 9px 0 0; }
+.mobility-sources li { color: var(--muted); font-size: .875rem; line-height: 1.65; margin-bottom: 5px; }
+.mobility-sources li:last-child { margin-bottom: 0; }
+.mobility-sources a { margin-inline-start: .4rem; color: var(--green); }
+#mobility-error, .mobility noscript p { margin-top: 15px; }
+@media (max-width: 900px) { .mobility-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 420px) {
+  .mobility-card, .mobility-sources { padding: 15px 12px; }
+  .mobility-controls { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .mobility-chart .trend-chart { grid-template-columns: 40px minmax(0, 1fr); }
+}
