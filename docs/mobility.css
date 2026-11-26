@@ -5,8 +5,8 @@
 .mobility-controls .picker-popover { z-index: 4; }
 .mobility .section-label span { font-size: .875rem; }
 .mobility-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.mobility-card { --mobility-accent: #59357a; --mobility-fill: #b69bc8; border-top: 3px solid var(--mobility-fill); padding: 20px; }
-.mobility-outbound { --mobility-accent: #315b82; --mobility-fill: #90acc6; }
+.mobility-card { --mobility-accent: #20508f; --mobility-fill: #88acdb; border-top: 3px solid var(--mobility-fill); padding: 20px; }
+.mobility-outbound { --mobility-accent: #08687d; --mobility-fill: #75c2cc; }
 .mobility-card h2 span { color: var(--mobility-accent); margin-right: .25em; }
 .mobility-definition, .mobility-breakdown { color: var(--muted); font-size: .875rem; line-height: 1.55; }
 .mobility-definition { margin-top: 5px; }

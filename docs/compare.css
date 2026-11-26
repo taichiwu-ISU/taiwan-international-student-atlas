@@ -4,9 +4,9 @@
 .compare-selection { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 14px; margin-top: 11px; }
 .peer-chips, .source-pills, .compare-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .peer-chips:empty { display: none; }
-.peer-chip, .source-pills span { padding: 4px 8px; border: 1px solid #e3dce8; border-radius: 6px; background: #f4f0f6; color: var(--ink); font-size: .75rem; }
+.peer-chip, .source-pills span { padding: 4px 8px; border: 1px solid #d5e0ef; border-radius: 6px; background: #edf2f9; color: var(--ink); font-size: .75rem; }
 .peer-chip { display: inline-flex; align-items: center; gap: 7px; }
-.peer-chip:hover { border-color: #9d8da9; }
+.peer-chip:hover { border-color: #7596c1; }
 .chip-close { color: var(--muted); font-size: 1rem; }
 .compare-note { color: var(--muted); font-size: .76rem; line-height: 1.55; }
 .panel-note { margin-top: 12px; }
@@ -18,13 +18,13 @@
 .comparison-select { flex: 0 0 min(34%, 204px); }
 .compare-panel .picker-popover { left: auto; right: 0; }
 .compare-table tbody th { background: transparent; color: var(--ink); font-weight: 650; }
-.compare-table tbody .focus-row { background: #f2edf5; }
+.compare-table tbody .focus-row { background: #eaf0f8; }
 .compare-table th:first-child { min-width: 145px; }
 .school-mark { display: inline-flex; align-items: baseline; gap: 7px; line-height: 1.5; }
 .school-mark i { align-self: center; width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; }
 .measure-text { font-weight: 680; }
 .measure-foot { display: block; color: var(--muted); font-size: .72rem; font-weight: 500; line-height: 1.5; margin-top: 2px; }
-.positive-delta { color: #42205b; font-weight: 700; }
+.positive-delta { color: #11376a; font-weight: 700; }
 .source-pills span { white-space: nowrap; }
 #compare-trend-chart { margin-top: 14px; }
 .compare-legend { gap: 6px 15px; font-size: .75rem; color: var(--muted); }
@@ -46,7 +46,7 @@
 .field-list h3 { margin: 0 0 7px; font-size: .85rem; }
 .field-list ol { margin: 0; padding: 0; list-style: none; }
 .field-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 5px 0; font-size: .77rem; }
-.field-list li + li { border-top: 1px solid #eae5ed; }
+.field-list li + li { border-top: 1px solid #e0e8f2; }
 .field-list li span { overflow-wrap: anywhere; }
 .field-list strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
 

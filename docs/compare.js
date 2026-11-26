@@ -6,7 +6,7 @@ const { catalog, records, $, element, button, empty, selectOptions, yearLabel,
 const { number, collator, metrics, addCount, rankings, summarize, fieldCount, share, percent, people,
   rankLabel, rankText, namedCounts, dataTable, col } = window.studentAnalytics;
 
-const colors = ['#482363', '#386eaa', '#a15a30', '#75588f', '#8d6b19'];
+const colors = ['#164f9e', '#087989', '#a15a30', '#3c6cab', '#8d6b19'];
 const domains = Object.keys(catalog.domains).sort();
 const maxPeers = colors.length - 1;
 const state = {
